@@ -43,10 +43,10 @@ impl Password {
     pub fn is_correct_position(&self) -> bool {
         let chars: Vec<char> = self.password.chars().collect();
 
-        let a = chars[self.min_occurrence - 1];
-        let b = chars[self.max_occurrence - 1];
-
-        (a == self.letter && b != self.letter) || (a != self.letter && b == self.letter)
+        (chars[self.min_occurrence - 1] == self.letter
+            && chars[self.max_occurrence - 1] != self.letter)
+            || (chars[self.min_occurrence - 1] != self.letter
+                && chars[self.max_occurrence - 1] == self.letter)
     }
 }
 
