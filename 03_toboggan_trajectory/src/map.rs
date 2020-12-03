@@ -18,6 +18,21 @@ impl Map {
         }
     }
 
+    pub fn move_by(&mut self, x_step: usize, y_step: usize) {
+        let x = self.position_x;
+        if self.bounds_ok() {
+            let row_length = self.map_data[self.position_y].len();
+
+            if x + x_step >= row_length {
+                self.position_x = (x + x_step) - row_length;
+                self.position_y += y_step;
+            } else {
+                self.position_x = self.position_x + x_step;
+                self.position_y += y_step;
+            }
+        }
+    }
+
     #[cfg(test)]
     pub fn get_current_position(&self) -> (usize, usize) {
         (self.position_x, self.position_y)
@@ -50,6 +65,11 @@ impl Map {
             return self.map_data[self.position_y].len() - 1 >= self.position_x;
         }
         false
+    }
+
+    pub fn reset(&mut self) {
+        self.position_x = 0;
+        self.position_y = 0;
     }
 }
 
