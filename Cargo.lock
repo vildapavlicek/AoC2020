@@ -86,6 +86,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "toboggan_trajectory"
+version = "0.1.0"
+dependencies = [
+ "ron",
+ "serde",
+ "serde_derive",
+]
+
+[[package]]
 name = "unicode-xid"
 version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
