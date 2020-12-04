@@ -38,13 +38,16 @@ impl From<AoCInput> for Passports {
                     .iter()
                     .for_each(|&pair| {
                         let x = pair.split(':').collect::<Vec<&str>>();
-                        if let Some(fields_map) = m.get_mut(&id) {
-                            fields_map.insert(x[0].to_string(), x[1].to_string());
-                        } else {
-                            let mut new_map: HashMap<String, String> = HashMap::new();
-                            new_map.insert(x[0].to_string(), x[1].to_string());
-                            m.insert(id, new_map);
-                        }
+                        match m.get_mut(&id) {
+                            Some(passport) => {
+                                passport.insert(x[0].to_string(), x[1].to_string());
+                            }
+                            None => {
+                                let mut new_map: HashMap<String, String> = HashMap::new();
+                                new_map.insert(x[0].to_string(), x[1].to_string());
+                                m.insert(id, new_map);
+                            }
+                        };
                     })
             } else {
                 id += 1;
