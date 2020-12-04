@@ -2,5 +2,6 @@
 members = [
     "01_report_repair",
     "02_password_philosophy",
-    "03_toboggan_trajectory"
+    "03_toboggan_trajectory",
+    "04_passport_processing"
 ]
